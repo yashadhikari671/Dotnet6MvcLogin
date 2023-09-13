@@ -30,6 +30,30 @@ namespace Dotnet6MvcLogin.Controllers
             {
                 return RedirectToAction("Display", "Dashboard");
             }
+            else if(result.StatusCode == 2)
+            {
+                var data = new otpvalidation()
+                {
+                    UserName = model.Username
+                };
+                return RedirectToAction("Otpverification", "Dashboard", data);
+            }
+            else
+            {
+                TempData["msg"] = result.Message;
+                return RedirectToAction(nameof(Login));
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult> loginFA(otpvalidation otpvalidation)
+        {
+            if (!ModelState.IsValid)
+                return View("Otpverification", otpvalidation);
+            var result = await _authService.TwofactorAuth(otpvalidation);
+            if(result.StatusCode==1)
+            {
+                return RedirectToAction("Display", "Dashboard");
+            }
             else
             {
                 TempData["msg"] = result.Message;

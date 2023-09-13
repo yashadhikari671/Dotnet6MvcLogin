@@ -1,6 +1,7 @@
 using Dotnet6MvcLogin.Models.Domain;
 using Dotnet6MvcLogin.Repositories.Abstract;
 using Dotnet6MvcLogin.Repositories.Implementation;
+using Dotnet6MvcLogin.Services.MailingService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -20,6 +21,7 @@ builder.Services.AddControllersWithViews();
 
 //add services to container
 builder.Services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
+builder.Services.AddScoped<IMailingService, MailingService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

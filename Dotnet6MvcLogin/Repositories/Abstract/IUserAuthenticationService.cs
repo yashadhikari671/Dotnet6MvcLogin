@@ -6,6 +6,7 @@ namespace Dotnet6MvcLogin.Repositories.Abstract
     {
    
         Task<Status> LoginAsync(LoginModel model);
+        Task<Status> TwofactorAuth(otpvalidation model);
         Task LogoutAsync();
         Task<Status> RegisterAsync(RegistrationModel model);
         Task<Status> ChangePasswordAsync(ChangePasswordModel model, string username);

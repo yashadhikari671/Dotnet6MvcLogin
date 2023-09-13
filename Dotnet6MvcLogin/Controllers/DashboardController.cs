@@ -10,5 +10,9 @@ namespace Dotnet6MvcLogin.Controllers
         {
             return View();
         }
+        public IActionResult Otpverification()
+        {
+            return View();
+        }
     }
 }

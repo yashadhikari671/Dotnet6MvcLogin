@@ -1,0 +1,7 @@
+﻿@using Dotnet6MvcLogin.Models.DTO;
+@model otpvalidation
+<form asp-action="loginFA" asp-controller="UserAuthentication" method="post">
+    <input asp-for="otp"/>
+    <input asp-for="UserName"/>
+    <button type="submit">Submit</button>
+</form>
